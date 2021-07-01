@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  验证码:
+  <input type="text" size="10" maxlength="9" placeholder="请输验证码" autofocus id="txt-yzm">
+  <span id="yzm"></span> <br/>
+  <input type="button" value="登录" id="dl"/><br/>
+  验证码2:
+  <input type="text" size="10" maxlength="9" placeholder="请输验证码" autofocus id="txt-yzm2">
+  <span id="yzm2"></span> <br/>
+  <input type="button" value="登录" id="dl2"/><br/>
+</body>
+<script>
+  function $(id){
+	return document.getElementById(id);
+  }
+  $("yzm").innerHTML=parseInt(Math.random()*9000)+1000;
+  $("yzm").onclick=function(){
+	$("yzm").innerHTML=parseInt(Math.random()*9000)+1000;
+  }
+  $("dl").onclick=function(){
+    var yzm=$("txt-yzm").value;
+	  if(yzm==$("yzm").innerHTML){
+		alert("验证码正确!");
+	  }else{
+      alert("验证码错误!");
+    }
+  }
+  var str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890好哈西嘻和呵";
+  var arr = str.split("");
+  var result = "";
+  for(var i=0;i<4;i++)
+    {
+    var n = Math.floor(Math.random() * arr.length);
+    result += arr[n];
+    }
+  $("yzm2").innerHTML=result;
+  result = "";
+  $("yzm2").onclick=function(){
+    result = "";
+    for(var i=0;i<4;i++){
+      var n = Math.floor(Math.random() * arr.length);
+      result += arr[n];
+    }
+    $("yzm2").innerHTML=result;
+  }
+  $("dl2").onclick=function(){
+    var yzm2=$("txt-yzm2").value;
+	  if(yzm2==$("yzm2").innerHTML){
+		alert("验证码正确!");
+	  }else{
+      alert("验证码错误!");
+    }
+  }
+</script>
+</html>
